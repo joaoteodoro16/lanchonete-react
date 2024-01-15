@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url(https://img.freepik.com/fotos-gratis/comida-de-rua-com-fundo-preto-espaco-de-copia_23-2148242522.jpg?w=1380&t=st=1705278863~exp=1705279463~hmac=822ee942f0d453cd3685e5b712be065711e1add8a6118924170d9f19fd7be2f2);
+}

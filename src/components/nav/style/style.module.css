@@ -1,0 +1,45 @@
+.nav_bar {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.nav_bar .navContent {
+    width: 80%;
+    display: flex;
+    padding: .34rem 0rem;
+}
+
+.nav_bar .logo {
+    height: 60px;
+    max-height: 100%;
+
+}
+
+.nav_bar ul {
+    display: flex;
+    margin-left: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_bar li {
+    list-style: none;
+}
+
+.nav_bar .nav_link {
+    padding: .4rem .9rem;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.nav_bar .nav_link:hover {
+    color: rgb(226, 75, 75);
+}
