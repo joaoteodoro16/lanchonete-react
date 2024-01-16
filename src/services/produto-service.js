@@ -1,38 +1,19 @@
-import Produto from '../models/produto-model'
-
-
+import ApiService from '../core/helpers/api-service'
+import MethodApi from '../core/constants/request-constant'
 
 class ProdutoService {
-    getAll() {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImpvYW8iLCJleHAiOjE3MDUyOTMxMDd9.h602wjIS8wdgX6TSDc7yvZGSkjTokVkhQEKmsakhhww";
 
-        return fetch("http://localhost:8080/produtos", {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Erro na requisição: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((produtos) => {
-                return produtos.map((produto) => {
-                    return new Produto(
-                        produto.id,
-                        produto.name,
-                        produto.price,
-                        produto.description,
-                        produto.sector,
-                        produto.stock,
-                        produto.created_at,
-                        produto.img_path
-                    );
-                });
-            });
+    apiservice = new ApiService("http://localhost:8080")
+    
+    getProducts(){
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImpvYW8iLCJleHAiOjE3MDUzNzU5Nzd9.Xj29ycSme6gZRsELZXTE6QUDtx1MNTTApABDQ9zbK3c"
+        try{
+            const produtos = this.apiservice.makeRequest('produtos',MethodApi.GET,token);
+            return produtos 
+        }catch(e){
+            console.log(e)
+            return []
+        }
     }
 }
 

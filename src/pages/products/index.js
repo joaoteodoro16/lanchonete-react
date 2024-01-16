@@ -4,15 +4,13 @@ import ProductItem from './components/product-component';
 import ProdutoService from '../../services/produto-service'
 import FilterProducts from './components/filter-product'
 
-function ProductPage() {
+function Products() {
     const [produtos, setProdutos] = useState([]);
-
-
+    
     useEffect(() => {
         const produtosService = new ProdutoService();
-        produtosService.getAll().then((produtos) => setProdutos(produtos))
+        produtosService.getProducts().then((produtos) => setProdutos(produtos))
     }, []);
-
 
     return (
         <div className={style.product_container_wrapper}>
@@ -29,4 +27,4 @@ function ProductPage() {
     );
 }
 
-export default ProductPage;
+export default Products;

@@ -1,26 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavContext from './context/NavContext';
 import '../src/css/global.css';
 import NavBar from './components/nav/nav-component';
-import ProductPage from './pages/products/product-page'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './pages/home/home-page';
+import Products from './pages/products/index';
+import Home from './pages/home/index';
 
+const App = () => {
+  const [basket, setBasket] = useState(0)
+
+  return (
+    <React.StrictMode>
+      <NavContext.Provider value={{basket, setBasket}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<NavBar />}>
+              <Route index element={<Home />} />
+              <Route path="/products" element={<Products/>} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </NavContext.Provider>
+    </React.StrictMode>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        
-        <Route path='/' element={<NavBar />}>
-        <Route index element={<HomePage />} />
-          <Route path='/products' element={<ProductPage />} />
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+root.render(<App />);
 
 

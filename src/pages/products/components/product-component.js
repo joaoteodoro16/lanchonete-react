@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import style from '../styles/product.module.css'
+import NavContext from '../../../context/NavContext';
 
 function ProductItem({produto}) {
-
     const [count, setCount] = useState(0)
+    const {basket, setBasket} = useContext(NavContext)
 
     const incrementUnidade = () => {
         setCount((count) => count + 1)
+        setBasket((basket) => basket + 1)
     }
 
     const decreasedUnidade = () => {
         if(count != 0) {
             setCount((count) => count - 1)
+            setBasket((basket) => basket - 1)
         }
     }
 
